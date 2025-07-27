@@ -1,0 +1,346 @@
+/* ===== RESET & BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background-color: #1E2A38;
+    color: #F5F7FA;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'liga' 1, 'kern' 1;
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1E2A38;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00C2FF;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2ACFCF;
+}
+
+/* ===== GLASSMORPHISM EFFECT ===== */
+.glassmorphism {
+    background: rgba(30, 42, 56, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== ANIMATION CLASSES ===== */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== HERO SECTION ANIMATIONS ===== */
+.animate-fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== SERVICE CARDS ===== */
+.service-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0,194,255,0.1), transparent);
+    transition: left 0.5s;
+}
+
+.service-card:hover::before {
+    left: 100%;
+}
+
+/* ===== RESPONSIVE UTILITIES ===== */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .text-4xl {
+        font-size: 2rem;
+    }
+    
+    .text-6xl {
+        font-size: 3rem;
+    }
+    
+    .text-7xl {
+        font-size: 3.5rem;
+    }
+}
+
+/* ===== BUTTON HOVER EFFECTS ===== */
+.btn-hover-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-hover-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-hover-effect:hover::before {
+    left: 100%;
+}
+
+/* ===== IMAGE HOVER EFFECTS ===== */
+.gallery-image {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-image:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 194, 255, 0.4);
+    z-index: 10;
+}
+
+.gallery-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 194, 255, 0.1), rgba(42, 207, 207, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.gallery-image:hover::before {
+    opacity: 1;
+}
+
+/* Gallery grid responsive */
+@media (max-width: 640px) {
+    .gallery-image {
+        height: 200px;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+    .gallery-image {
+        height: 240px;
+    }
+}
+
+@media (min-width: 769px) {
+    .gallery-image {
+        height: 256px;
+    }
+}
+
+/* ===== MOBILE MENU ANIMATIONS ===== */
+.mobile-menu-enter {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.mobile-menu-enter.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== LOADING ANIMATION ===== */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #00C2FF;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===== TEXT SHADOW UTILITIES ===== */
+.text-shadow-dark {
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.text-shadow-light {
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+/* ===== GRADIENT BACKGROUNDS ===== */
+.gradient-primary {
+    background: linear-gradient(135deg, #00C2FF 0%, #2ACFCF 100%);
+}
+
+.gradient-secondary {
+    background: linear-gradient(135deg, #FFA652 0%, #FF8A00 100%);
+}
+
+/* ===== FOCUS STATES FOR ACCESSIBILITY ===== */
+button:focus,
+a:focus {
+    outline: 2px solid #00C2FF;
+    outline-offset: 2px;
+}
+
+/* ===== BACKGROUND SLIDESHOW ===== */
+.hero-background {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        url('image/hinh anh (1).jpg'),
+        url('image/hinh anh (2).jpg'),
+        url('image/hinh anh (3).jpg'),
+        url('image/hinh anh (4).jpg'),
+        url('image/hinh anh (5).jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: slideshow 20s ease-in-out infinite;
+    z-index: -2;
+}
+
+.hero-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(30, 42, 56, 0.8), rgba(30, 42, 56, 0.9));
+    z-index: -1;
+}
+
+@keyframes slideshow {
+    0%, 20% {
+        background-image: url('image/hinh anh (1).jpg');
+    }
+    25%, 45% {
+        background-image: url('image/hinh anh (2).jpg');
+    }
+    50%, 70% {
+        background-image: url('image/hinh anh (3).jpg');
+    }
+    75%, 95% {
+        background-image: url('image/hinh anh (4).jpg');
+    }
+    100% {
+        background-image: url('image/hinh anh (5).jpg');
+    }
+}
+
+/* Fallback cho trình duyệt không hỗ trợ animation */
+@supports not (animation: slideshow 20s ease-in-out infinite) {
+    .hero-background::before {
+        background-image: url('image/hinh anh (1).jpg');
+    }
+}
+
+/* ===== FONT IMPROVEMENTS FOR VIETNAMESE ===== */
+.vietnamese-text {
+    font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+}
+
+.vietnamese-heading {
+    font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 1.2;
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+}
+
+.slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Đặt slideshow phía sau nội dung */
+  }
+  
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Đảm bảo ảnh lấp đầy vùng chứa */
+    opacity: 0; /* Ẩn tất cả các ảnh ban đầu */
+    transition: opacity 1s ease-in-out; /* Hiệu ứng chuyển đổi mượt mà */
+  }
+  
+  .slide.active {
+    opacity: 1; /* Hiện ảnh đang hoạt động */
+  }
